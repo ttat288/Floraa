@@ -1,0 +1,30 @@
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.csproj.AssemblyReference.cache
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.AssemblyInfoInputs.cache
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.AssemblyInfo.cs
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.csproj.CoreCompileInputs.cache
+D:\Project\test-floraa\Service\bin\Debug\net8.0\Service.deps.json
+D:\Project\test-floraa\Service\bin\Debug\net8.0\Service.dll
+D:\Project\test-floraa\Service\bin\Debug\net8.0\Service.pdb
+D:\Project\test-floraa\Service\bin\Debug\net8.0\Repository.dll
+D:\Project\test-floraa\Service\bin\Debug\net8.0\Repository.pdb
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.csproj.Up2Date
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.dll
+D:\Project\test-floraa\Service\obj\Debug\net8.0\refint\Service.dll
+D:\Project\test-floraa\Service\obj\Debug\net8.0\Service.pdb
+D:\Project\test-floraa\Service\obj\Debug\net8.0\ref\Service.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Service\bin\Debug\net8.0\Service.deps.json
+D:\Project\D08 Floraa\Backend\test-floraa\Service\bin\Debug\net8.0\Service.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Service\bin\Debug\net8.0\Service.pdb
+D:\Project\D08 Floraa\Backend\test-floraa\Service\bin\Debug\net8.0\Repository.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Service\bin\Debug\net8.0\Repository.pdb
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.csproj.AssemblyReference.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.AssemblyInfoInputs.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.AssemblyInfo.cs
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.csproj.CoreCompileInputs.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.csproj.Up2Date
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\refint\Service.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\Service.pdb
+D:\Project\D08 Floraa\Backend\test-floraa\Service\obj\Debug\net8.0\ref\Service.dll

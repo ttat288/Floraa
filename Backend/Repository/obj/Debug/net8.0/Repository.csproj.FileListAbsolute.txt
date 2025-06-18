@@ -1,0 +1,28 @@
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+D:\Project\test-floraa\Repository\bin\Debug\net8.0\Repository.deps.json
+D:\Project\test-floraa\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+D:\Project\test-floraa\Repository\bin\Debug\net8.0\Repository.dll
+D:\Project\test-floraa\Repository\bin\Debug\net8.0\Repository.pdb
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.dll
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\refint\Repository.dll
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.pdb
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+D:\Project\test-floraa\Repository\obj\Debug\net8.0\ref\Repository.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\bin\Debug\net8.0\Repository.deps.json
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\bin\Debug\net8.0\Repository.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\bin\Debug\net8.0\Repository.pdb
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\refint\Repository.dll
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.pdb
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+D:\Project\D08 Floraa\Backend\test-floraa\Repository\obj\Debug\net8.0\ref\Repository.dll
