@@ -13,19 +13,10 @@
 # ASP.NET Scaffolding
 **/ScaffoldingReadMe.txt
 
-# Others
-**/*.log
-**/*.tlog
-**/*.cache
-**/*.pdb
-**/*.mdb
-**/*.dbmdl
-**/*.bak
-**/*.orig
-
-# Visual Studio Code
+# Visual Studio / VS Code
 **/.vscode/
 **/.vs/
+**/.idea/
 
 # NuGet
 **/*.nupkg
@@ -35,74 +26,107 @@
 **/project.lock.json
 **/project.fragment.lock.json
 
-# Runtime
+# Runtime files
 **/*.dll
 **/*.exe
 **/*.deps.json
 **/*.runtimeconfig.json
 **/*.runtimeconfig.dev.json
 
-# Publish
+# Publish directories
 **/publish/
 **/out/
 **/artifacts/
 
-# Secrets
+# Logs and cache
+**/*.log
+**/*.tlog
+**/*.cache
+**/*.pdb
+**/*.mdb
+**/*.dbmdl
+**/*.bak
+**/*.orig
+
+# Secrets and environment
 **/appsettings.Development.json
 **/appsettings.Local.json
 **/secrets.json
 **/.env
+**/.env.local
+**/.env.development
+**/.env.production
 
 # Docker
 **/*.tar
 **/docker-compose.override.yml
 
-# Logs
-**/logs/
-**/*.log
-
-# Test results and IDE configs
+# Test results
 **/TestResults/
-**/.idea/
+**/logs/
 
 # ===================== FRONTEND (Next.js) =====================
 
-# dependencies
+# Dependencies
 **/node_modules/
 **/.pnp
 **/.pnp.*
-**/.yarn/*
+**/.yarn/
 !**/.yarn/patches
 !**/.yarn/plugins
 !**/.yarn/releases
 !**/.yarn/versions
 
-# testing
+# Testing
 **/coverage/
 
-# next.js
+# Next.js
 **/.next/
 **/out/
 
-# production
+# Production build
 **/build/
+**/dist/
 
-# misc
-**/.DS_Store
-**/*.pem
+# Environment variables
+**/.env*
+!**/.env.example
 
-# debug logs
+# Debug logs
 **/npm-debug.log*
 **/yarn-debug.log*
 **/yarn-error.log*
 **/.pnpm-debug.log*
 
-# env files
-**/.env*
-
-# vercel
-**/.vercel/
-
-# typescript
+# TypeScript
 **/*.tsbuildinfo
 **/next-env.d.ts
+
+# Vercel
+**/.vercel/
+
+# Misc
+**/.DS_Store
+**/*.pem
+
+# ===================== GENERAL =====================
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# IDE files
+*.sublime-project
+*.sublime-workspace
