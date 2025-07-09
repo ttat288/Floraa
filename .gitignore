@@ -1,109 +1,108 @@
 # ===================== BACKEND (.NET Core API) =====================
 
 # Build results
-/Backend/bin/
-/Backend/obj/
+**/bin/
+**/obj/
 
 # User-specific files
-/Backend/*.user
-/Backend/*.suo
-/Backend/*.userosscache
-/Backend/*.sln.docstates
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
 
 # ASP.NET Scaffolding
-/Backend/ScaffoldingReadMe.txt
+**/ScaffoldingReadMe.txt
 
 # Others
-/Backend/*.log
-/Backend/*.tlog
-/Backend/*.cache
-/Backend/*.pdb
-/Backend/*.mdb
-/Backend/*.dbmdl
-/Backend/*.bak
-/Backend/*.orig
+**/*.log
+**/*.tlog
+**/*.cache
+**/*.pdb
+**/*.mdb
+**/*.dbmdl
+**/*.bak
+**/*.orig
 
 # Visual Studio Code
-/Backend/.vscode/
-
-/Backend/.vs/
+**/.vscode/
+**/.vs/
 
 # NuGet
-/Backend/*.nupkg
-/Backend/*.snupkg
-/Backend/*.nuspec
-/Backend/packages/
-/Backend/project.lock.json
-/Backend/project.fragment.lock.json
+**/*.nupkg
+**/*.snupkg
+**/*.nuspec
+**/packages/
+**/project.lock.json
+**/project.fragment.lock.json
 
 # Runtime
-/Backend/*.dll
-/Backend/*.exe
-/Backend/*.deps.json
-/Backend/*.runtimeconfig.json
-/Backend/*.runtimeconfig.dev.json
+**/*.dll
+**/*.exe
+**/*.deps.json
+**/*.runtimeconfig.json
+**/*.runtimeconfig.dev.json
 
 # Publish
-/Backend/publish/
-/Backend/out/
-/Backend/artifacts/
+**/publish/
+**/out/
+**/artifacts/
 
 # Secrets
-/Backend/appsettings.Development.json
-/Backend/appsettings.Local.json
-/Backend/secrets.json
-/Backend/.env
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/secrets.json
+**/.env
 
 # Docker
-/Backend/*.tar
-/Backend/docker-compose.override.yml
+**/*.tar
+**/docker-compose.override.yml
 
 # Logs
-/Backend/logs/
-/Backend/*.log
+**/logs/
+**/*.log
 
-# Others
-/Backend/TestResults/
-/Backend/.idea/
+# Test results and IDE configs
+**/TestResults/
+**/.idea/
 
 # ===================== FRONTEND (Next.js) =====================
 
 # dependencies
-/Frontend/node_modules
-/Frontend/.pnp
-/Frontend/.pnp.*
-/Frontend/.yarn/*
-!/Frontend/.yarn/patches
-!/Frontend/.yarn/plugins
-!/Frontend/.yarn/releases
-!/Frontend/.yarn/versions
+**/node_modules/
+**/.pnp
+**/.pnp.*
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/versions
 
 # testing
-/Frontend/coverage
+**/coverage/
 
 # next.js
-/Frontend/.next/
-/Frontend/out/
+**/.next/
+**/out/
 
 # production
-/Frontend/build
+**/build/
 
 # misc
-/Frontend/.DS_Store
-/Frontend/*.pem
+**/.DS_Store
+**/*.pem
 
-# debug
-/Frontend/npm-debug.log*
-/Frontend/yarn-debug.log*
-/Frontend/yarn-error.log*
-/Frontend/.pnpm-debug.log*
+# debug logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/.pnpm-debug.log*
 
 # env files
-/Frontend/.env*
+**/.env*
 
 # vercel
-/Frontend/.vercel
+**/.vercel/
 
 # typescript
-/Frontend/*.tsbuildinfo
-/Frontend/next-env.d.ts
+**/*.tsbuildinfo
+**/next-env.d.ts
