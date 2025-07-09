@@ -4,7 +4,7 @@ using Domain.Common;
 
 namespace Domain.Entities;
 
-public class Order : BaseEntity
+public class Order : BaseSoftDeleteEntity
 {
     [Required]
     [MaxLength(50)]

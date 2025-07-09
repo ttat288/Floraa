@@ -1,7 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Common;
 
+// Base entity cho dữ liệu tạm thời - không cần soft delete
 public abstract class BaseEntity
 {
     [Key]
@@ -10,13 +11,17 @@ public abstract class BaseEntity
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+}
 
+// Base entity cho dữ liệu cần soft delete
+public abstract class BaseSoftDeleteEntity : BaseEntity
+{
     public bool IsDeleted { get; set; } = false;
 
     public DateTime? DeletedAt { get; set; }
 }
 
-public abstract class BaseActiveEntity : BaseEntity
+public abstract class BaseActiveEntity : BaseSoftDeleteEntity
 {
     public bool IsActive { get; set; } = true;
 }

@@ -2,7 +2,9 @@ namespace Domain.Enums;
 
 public enum EmployeeRole
 {
-    Staff = 1,
-    Manager = 2,
-    Admin = 3
+    Customer = 1,
+    Staff = 2,
+    Manager = 3,
+    SuperManager = 4,
+    Admin = 5
 }

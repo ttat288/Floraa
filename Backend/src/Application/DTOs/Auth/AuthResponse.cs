@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Application.DTOs.Auth;
 
 public class AuthResponse
@@ -15,5 +17,5 @@ public class UserDto
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string? PhoneNumber { get; set; }
-    public string Role { get; set; } = string.Empty;
+    public EmployeeRole Role { get; set; } = EmployeeRole.Customer;
 }

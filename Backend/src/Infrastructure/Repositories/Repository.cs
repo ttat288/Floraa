@@ -57,20 +57,27 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public void Delete(T entity)
     {
-        // Soft delete
-        entity.IsDeleted = true;
-        entity.DeletedAt = DateTime.UtcNow;
-        _dbSet.Update(entity);
+        // Check if entity supports soft delete
+        if (entity is BaseSoftDeleteEntity softDeleteEntity)
+        {
+            // Soft delete
+            softDeleteEntity.IsDeleted = true;
+            softDeleteEntity.DeletedAt = DateTime.UtcNow;
+            _dbSet.Update(entity);
+        }
+        else
+        {
+            // Hard delete for entities that don't support soft delete
+            _dbSet.Remove(entity);
+        }
     }
 
     public void DeleteRange(IEnumerable<T> entities)
     {
         foreach (var entity in entities)
         {
-            entity.IsDeleted = true;
-            entity.DeletedAt = DateTime.UtcNow;
+            Delete(entity);
         }
-        _dbSet.UpdateRange(entities);
     }
 
     public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)

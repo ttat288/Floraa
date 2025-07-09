@@ -40,7 +40,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, BaseRespo
             PasswordHash = _passwordHasher.HashPassword(request.Request.Password),
             Name = $"{request.Request.FirstName} {request.Request.LastName}",
             PhoneNumber = request.Request.PhoneNumber,
-            Role = "Customer"
+            Role = Domain.Enums.EmployeeRole.Customer
         };
 
         await _unitOfWork.Users.AddAsync(user);

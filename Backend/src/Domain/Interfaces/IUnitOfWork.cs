@@ -31,7 +31,8 @@ public interface IUnitOfWork : IDisposable
     IRepository<ProductCategory> ProductCategories { get; }
     IRepository<ProductOccasion> ProductOccasions { get; }
     IRepository<ShopCategory> ShopCategories { get; }
-    
+    IRepository<AccountActivation> AccountActivations { get; }
+
     Task<int> SaveChangesAsync();
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();

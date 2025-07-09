@@ -4157,11 +4157,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "D:\\Project\\Floraa\\Backend\\src\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "D:\\Project\\Floraa\\Backend\\src\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Infrastructure\\obj\\",
+      "outputPath": "D:\\Project\\Floraa\\Backend\\src\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4180,11 +4180,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Application\\Application.csproj"
+            "D:\\Project\\Floraa\\Backend\\src\\Application\\Application.csproj": {
+              "projectPath": "D:\\Project\\Floraa\\Backend\\src\\Application\\Application.csproj"
             },
-            "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\PC\\Downloads\\aspnet-core-api\\src\\Domain\\Domain.csproj"
+            "D:\\Project\\Floraa\\Backend\\src\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Project\\Floraa\\Backend\\src\\Domain\\Domain.csproj"
             }
           }
         }

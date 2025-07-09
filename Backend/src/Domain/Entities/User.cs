@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Domain.Common;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
@@ -25,7 +26,7 @@ public class User : BaseActiveEntity
     
     [Required]
     [MaxLength(50)]
-    public string Role { get; set; } = "Customer";
+    public EmployeeRole Role { get; set; } = EmployeeRole.Customer;
 
     // Legacy properties for compatibility (can be removed later)
     public string? RefreshToken { get; set; }

@@ -40,6 +40,7 @@ public class UnitOfWork : IUnitOfWork
         ProductCategories = new Repository<ProductCategory>(_context);
         ProductOccasions = new Repository<ProductOccasion>(_context);
         ShopCategories = new Repository<ShopCategory>(_context);
+        AccountActivations = new Repository<AccountActivation>(_context);
     }
 
     public IRepository<User> Users { get; }
@@ -69,6 +70,7 @@ public class UnitOfWork : IUnitOfWork
     public IRepository<ProductCategory> ProductCategories { get; }
     public IRepository<ProductOccasion> ProductOccasions { get; }
     public IRepository<ShopCategory> ShopCategories { get; }
+    public IRepository<AccountActivation> AccountActivations { get; }
 
     public async Task<int> SaveChangesAsync()
     {

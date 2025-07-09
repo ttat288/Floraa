@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Common;
 
 namespace Domain.Entities;
 
+// StorageLog không cần soft delete - dùng BaseEntity
 public class StorageLog : BaseEntity
 {
     [Required]

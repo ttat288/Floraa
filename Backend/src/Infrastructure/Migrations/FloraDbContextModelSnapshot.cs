@@ -22,6 +22,50 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.AccountActivation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ActivationToken")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TempPassword")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UsedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivationToken")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AccountActivations");
+                });
+
             modelBuilder.Entity("Domain.Entities.ActivityLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -41,15 +85,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("IPAddress")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -75,12 +113,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -142,39 +174,39 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4a5aabd6-7bb5-4266-a96b-e882e51f8c36"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8576),
+                            Id = new Guid("89ff9ab6-cd5c-4429-936f-3dbd7f8150f7"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(696),
                             Description = "Rose flowers",
                             IsDeleted = false,
                             Name = "Roses",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8576)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(697)
                         },
                         new
                         {
-                            Id = new Guid("625b59ea-0559-45db-8d7f-f8b64aec1128"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8578),
+                            Id = new Guid("3f52724b-c840-46e3-94c3-e192ac10a990"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(702),
                             Description = "Lily flowers",
                             IsDeleted = false,
                             Name = "Lilies",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8579)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(703)
                         },
                         new
                         {
-                            Id = new Guid("f8ff8052-c347-4139-8b0c-4bba7e7a1d96"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8581),
+                            Id = new Guid("bbe319bf-70c8-4ecc-b7c5-a085e09c97da"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(709),
                             Description = "Tulip flowers",
                             IsDeleted = false,
                             Name = "Tulips",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8582)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(710)
                         },
                         new
                         {
-                            Id = new Guid("a5e7d70b-1376-4a9a-b044-8daabff613eb"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8586),
+                            Id = new Guid("3b65b03f-1f95-4fa5-8abe-82343c9ddc19"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(714),
                             Description = "Orchid flowers",
                             IsDeleted = false,
                             Name = "Orchids",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8586)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(714)
                         });
                 });
 
@@ -215,43 +247,43 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("475736eb-efea-4a24-bf96-540931cdd918"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8495),
+                            Id = new Guid("328f82a4-e145-4477-a42b-1a5fe08a9703"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(558),
                             Description = "Red flowers",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Red",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8496)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(559)
                         },
                         new
                         {
-                            Id = new Guid("136e785c-0602-4f3e-9134-913a70c0e5be"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8499),
+                            Id = new Guid("0f5d8238-4d07-41af-9ab3-e1f5c54329f5"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(564),
                             Description = "White flowers",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "White",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8499)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(564)
                         },
                         new
                         {
-                            Id = new Guid("802f5bd9-d43b-47b2-ac84-309cb01ddc1d"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8501),
+                            Id = new Guid("a5669ad2-0ee4-4f66-bb81-31900fc79659"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(569),
                             Description = "Pink flowers",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Pink",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8502)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(569)
                         },
                         new
                         {
-                            Id = new Guid("50ab314f-a0ba-4237-8c51-5e1348a225d5"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8504),
+                            Id = new Guid("7602aa41-43d2-4840-97ee-d1268656770e"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(578),
                             Description = "Yellow flowers",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Yellow",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8504)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(579)
                         });
                 });
 
@@ -315,12 +347,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<Guid>("ShopId")
                         .HasColumnType("uniqueidentifier");
 
@@ -347,9 +373,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -412,48 +435,48 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("afefea5d-15c0-47a5-8bf2-5a4d1a5dc73a"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8534),
+                            Id = new Guid("02929fbb-e00c-4551-9d1e-cd2c89699e2c"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(625),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Birthday",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8535)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(625)
                         },
                         new
                         {
-                            Id = new Guid("5680ea95-b9d9-4ed5-8c15-2c8048dc49b9"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8537),
+                            Id = new Guid("74a4d119-8e73-4a53-9bc8-69327cf630a3"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(630),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Anniversary",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8538)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(630)
                         },
                         new
                         {
-                            Id = new Guid("6f01276b-6357-4af7-9bd9-2a4ab4a4eba4"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8540),
+                            Id = new Guid("e2a8d006-53c6-43af-af7a-10d9dde6b5d2"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(634),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Valentine's Day",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8541)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(635)
                         },
                         new
                         {
-                            Id = new Guid("c5c090fa-12f8-42c4-8a09-946ca5a28eb3"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8543),
+                            Id = new Guid("9657e06c-34c8-42e6-81bc-9af42fe5f35c"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(643),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Mother's Day",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8544)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(643)
                         },
                         new
                         {
-                            Id = new Guid("29967f12-d87d-4e6f-beee-0864c02f0298"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8547),
+                            Id = new Guid("5740203c-4336-4da6-8822-7fc1093878c5"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(648),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Wedding",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8548)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(648)
                         });
                 });
 
@@ -554,12 +577,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Note")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -602,12 +619,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Method")
                         .IsRequired()
@@ -733,12 +744,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
@@ -763,12 +768,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("OccasionId")
                         .HasColumnType("uniqueidentifier");
@@ -797,12 +796,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -856,39 +849,39 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e40485bc-921f-4985-87b2-63cabc3db9af"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8609),
+                            Id = new Guid("f7bf863f-d474-447a-993b-2d159af68e0e"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(749),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Lover",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8609)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(750)
                         },
                         new
                         {
-                            Id = new Guid("9ab70068-646f-49a4-a85f-03c32de5feec"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8612),
+                            Id = new Guid("99184c5a-b0d4-4ad1-8d84-b486eb4c86fa"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(754),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Family",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8612)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(754)
                         },
                         new
                         {
-                            Id = new Guid("d10e5df7-7f14-410b-a206-bf289e044d23"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8614),
+                            Id = new Guid("3361be9e-0fcc-4def-908e-079f67d1af58"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(761),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Friend",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8615)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(762)
                         },
                         new
                         {
-                            Id = new Guid("1c50f921-6590-442c-9931-9f9c17577a31"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8619),
+                            Id = new Guid("135abc59-92bb-4be5-9536-0d5520139f81"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(766),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Colleague",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8619)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(766)
                         });
                 });
 
@@ -901,14 +894,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("ExpiresAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsRevoked")
                         .HasColumnType("bit");
@@ -1005,12 +992,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<Guid>("ShopId")
                         .HasColumnType("uniqueidentifier");
 
@@ -1038,12 +1019,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("CurrentStock")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -1079,15 +1054,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -1128,12 +1097,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Meaning")
                         .HasMaxLength(500)
@@ -1223,33 +1186,33 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2893e30a-1b9b-4a65-9070-290506286609"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8311),
+                            Id = new Guid("50797280-eb43-470b-beff-76f3b626c9da"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(297),
                             Description = "Romantic flower arrangements",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Romantic",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8311)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(298)
                         },
                         new
                         {
-                            Id = new Guid("62932c29-1d14-4ce2-b620-3c48293124a2"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8314),
+                            Id = new Guid("f6d27151-60d8-4416-94b1-780f985a56e9"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(303),
                             Description = "Classic flower arrangements",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Classic",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8315)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(304)
                         },
                         new
                         {
-                            Id = new Guid("7f68e77f-30dc-4613-a104-a99256da065a"),
-                            CreatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8317),
+                            Id = new Guid("11906caa-a33e-4d07-bda8-f8df47e9239b"),
+                            CreatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(324),
                             Description = "Modern flower arrangements",
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Modern",
-                            UpdatedAt = new DateTime(2025, 6, 30, 13, 3, 31, 619, DateTimeKind.Utc).AddTicks(8317)
+                            UpdatedAt = new DateTime(2025, 7, 9, 1, 25, 1, 601, DateTimeKind.Utc).AddTicks(325)
                         });
                 });
 
@@ -1300,10 +1263,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
+                    b.Property<int>("Role")
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -1327,12 +1289,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsUsed")
                         .HasColumnType("bit");
@@ -1418,6 +1374,17 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ShopId");
 
                     b.ToTable("Vouchers");
+                });
+
+            modelBuilder.Entity("Domain.Entities.AccountActivation", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.ActivityLog", b =>

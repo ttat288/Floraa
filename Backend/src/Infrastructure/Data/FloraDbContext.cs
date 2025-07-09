@@ -36,7 +36,8 @@ public class FloraDbContext : DbContext
     public DbSet<TargetAudience> TargetAudiences { get; set; }
     public DbSet<ProductTarget> ProductTargets { get; set; }
     public DbSet<Employee> Employees { get; set; }
-    
+    public DbSet<AccountActivation> AccountActivations { get; set; }
+
     // Junction tables
     public DbSet<ProductCategory> ProductCategories { get; set; }
     public DbSet<ProductOccasion> ProductOccasions { get; set; }
@@ -61,6 +62,10 @@ public class FloraDbContext : DbContext
 
         modelBuilder.Entity<RefreshToken>()
             .HasIndex(rt => rt.RefreshTokenCode)
+            .IsUnique();
+
+        modelBuilder.Entity<AccountActivation>()
+            .HasIndex(aa => aa.ActivationToken)
             .IsUnique();
 
         // Configure composite unique constraints
@@ -170,6 +175,12 @@ public class FloraDbContext : DbContext
             .HasForeignKey(ta => ta.RecipientTypeId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        modelBuilder.Entity<AccountActivation>()
+            .HasOne(aa => aa.User)
+            .WithMany()
+            .HasForeignKey(aa => aa.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         // Configure decimal precision
         modelBuilder.Entity<Product>()
             .Property(p => p.Price)
@@ -207,16 +218,16 @@ public class FloraDbContext : DbContext
             .Property(v => v.MaxDiscountAmount)
             .HasPrecision(18, 2);
 
-        // Global query filter for soft delete - áp dụng cho TẤT CẢ entities inherit từ BaseEntity
+        // Global query filter CHỈ cho BaseSoftDeleteEntity
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
-            if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType))
+            if (typeof(BaseSoftDeleteEntity).IsAssignableFrom(entityType.ClrType))
             {
                 var parameter = Expression.Parameter(entityType.ClrType, "e");
-                var property = Expression.Property(parameter, nameof(BaseEntity.IsDeleted));
+                var property = Expression.Property(parameter, nameof(BaseSoftDeleteEntity.IsDeleted));
                 var condition = Expression.Equal(property, Expression.Constant(false));
                 var lambda = Expression.Lambda(condition, parameter);
-                
+
                 modelBuilder.Entity(entityType.ClrType).HasQueryFilter(lambda);
             }
         }
