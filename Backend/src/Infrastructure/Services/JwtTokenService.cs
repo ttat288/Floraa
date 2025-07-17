@@ -75,9 +75,9 @@ public class JwtTokenService : ITokenService
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = true,
+                ValidateIssuer = false,
                 ValidIssuer = _configuration["Jwt:Issuer"],
-                ValidateAudience = true,
+                ValidateAudience = false,
                 ValidAudience = _configuration["Jwt:Audience"],
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero
