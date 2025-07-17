@@ -1,4 +1,4 @@
-using API.Middleware;
+﻿using API.Middleware;
 using Application.Common.Interfaces;
 using Application.Features.Auth.Commands;
 using Domain.Interfaces;
@@ -12,26 +12,26 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using Infrastructure.Caching;
 using StackExchange.Redis;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Swagger configuration with JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme",
         Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
+        Description = "Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: 'Bearer 12345abcdef'",
     });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
     {
         {
             new OpenApiSecurityScheme
@@ -40,9 +40,12 @@ builder.Services.AddSwaggerGen(c =>
                 {
                     Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
-                }
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header,
             },
-            Array.Empty<string>()
+            new List<string>()
         }
     });
 });
@@ -53,9 +56,7 @@ builder.Services.AddDbContext<FloraDbContext>(options =>
 
 // Cache Configuration
 builder.Services.Configure<CacheConfiguration>(builder.Configuration.GetSection(CacheConfiguration.SectionName));
-
 var cacheConfig = builder.Configuration.GetSection(CacheConfiguration.SectionName).Get<CacheConfiguration>() ?? new CacheConfiguration();
-
 if (cacheConfig.EnableCaching)
 {
     if (cacheConfig.Type == CacheType.Redis && !string.IsNullOrEmpty(cacheConfig.RedisConnectionString))
@@ -102,8 +103,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidAudience = builder.Configuration["Jwt:Audience"],
             ValidateLifetime = true,
-            ClockSkew = TimeSpan.Zero
+            ClockSkew = TimeSpan.Zero,
+            RoleClaimType = ClaimTypes.Role // Ensure this is set for role-based authorization
         };
+
     });
 
 builder.Services.AddAuthorization();
@@ -129,14 +132,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
-
 app.UseHttpsRedirection();
-
 app.UseCors("AllowAll");
-
-app.UseAuthentication();
+app.UseAuthentication(); // Must be before UseAuthorization
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

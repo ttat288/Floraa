@@ -26,11 +26,11 @@ public class AccountManagementController : ControllerBase
     {
         // Validate role permissions
         var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
         if (currentUserRole == "SuperManager" && request.Role == EmployeeRole.Admin)
         {
             return BadRequest(BaseResponse<string>.ErrorResult("SuperManager cannot create Admin accounts"));
         }
-
         var command = new RegisterRoleCommand(request);
         var result = await _mediator.Send(command);
         return Ok(result);

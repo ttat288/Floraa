@@ -287,5 +287,41 @@ public class FloraDbContext : DbContext
             new RecipientType { Id = Guid.NewGuid(), Name = "Colleague", IsActive = true, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
         };
         modelBuilder.Entity<RecipientType>().HasData(recipientTypes);
+
+        // Seed Admin Accounts
+        var adminId = Guid.NewGuid();
+        var superManagerId = Guid.NewGuid();
+
+        // Hash passwords (you'll need to use a consistent salt or method)
+        var passwordHasher = new Infrastructure.Services.PasswordHasher();
+
+        var adminUsers = new[]
+        {
+            new User
+            {
+                Id = adminId,
+                Email = "tranthamanhtoan288@gmail.com",
+                PasswordHash = passwordHasher.HashPassword("Admin123!"),
+                Name = "System Administrator",
+                PhoneNumber = "0123456789",
+                Role = Domain.Enums.EmployeeRole.Admin,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new User
+            {
+                Id = superManagerId,
+                Email = "tranthamanhtoan47@gmail.com",
+                PasswordHash = passwordHasher.HashPassword("SuperManager123!"),
+                Name = "Super Manager",
+                PhoneNumber = "0987654321",
+                Role = Domain.Enums.EmployeeRole.SuperManager,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            }
+        };
+        modelBuilder.Entity<User>().HasData(adminUsers);
     }
 }
