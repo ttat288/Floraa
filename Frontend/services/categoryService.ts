@@ -1,6 +1,5 @@
-import { ApiResponse } from '@/lib/common/BaseResponse';
 import { http } from '@/lib/common/http.type';
-import { CategoryDto } from '@/lib/schemas/category/category-dto.schema';
+import type { CategoryDto } from '@/lib/schemas/category/category-dto.schema';
 
 export const getActiveCategories = async (): Promise<CategoryDto[]> => {
   try {
@@ -9,8 +8,9 @@ export const getActiveCategories = async (): Promise<CategoryDto[]> => {
     });
 
     return response;
-  } catch (error: any) {
-    console.error('Error fetching cart:', error);
+  } catch (error) {
+    const serviceError = error as Error;
+    console.error('Error fetching categories:', serviceError);
     throw error;
   }
 };
