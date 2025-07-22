@@ -15,6 +15,7 @@ export const http = {
 
   post: <T>(
     url: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body?: any,
     options?: RequestInit,
     baseUrl: string = DEFAULT_BASE_URL
@@ -27,6 +28,7 @@ export const http = {
 
   put: <T>(
     url: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body?: any,
     options?: RequestInit,
     baseUrl: string = DEFAULT_BASE_URL

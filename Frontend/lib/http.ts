@@ -1,10 +1,17 @@
 'use server';
 
-import { RequestInit } from 'next/dist/server/web/spec-extension/request';
+import type { RequestInit } from 'next/dist/server/web/spec-extension/request';
 import { redirect } from 'next/navigation';
 
 import { env } from '@/env.mjs';
-import { getCookie, setCookie } from '../helper/utils/tokenUtils';
+import { getCookie, setCookie } from '@/helper/utils/tokenUtils';
+
+interface TokenResponse {
+  data: {
+    accessToken: { value: string };
+    refreshToken: { value: string };
+  };
+}
 
 export async function fetchWithAuth<T>(
   url: string,
@@ -31,7 +38,6 @@ export async function fetchWithAuth<T>(
     clearTimeout(timeout);
 
     if (res.status === 401) {
-      // eslint-disable-next-line no-use-before-define
       return await handleTokenRefresh<T>(url, options);
     }
     if (res.status === 204 || res.headers.get('content-length') === '0') {
@@ -73,15 +79,15 @@ async function handleTokenRefresh<T>(
       }
     );
 
-    const { data } = await refreshTokenResponse.json();
+    const tokenData: TokenResponse = await refreshTokenResponse.json();
     if (!refreshTokenResponse.ok) {
       throw new Error('Failed to refresh token');
     }
 
-    const newAccessToken = data.accessToken;
-    const newRefreshToken = data.refreshToken;
+    const newAccessToken = tokenData.data.accessToken.value;
+    const newRefreshToken = tokenData.data.refreshToken.value;
 
-    setCookie('accessToken', newAccessToken.value, {
+    setCookie('accessToken', newAccessToken, {
       httpOnly: false,
       secure: false,
       path: '/',
@@ -89,7 +95,7 @@ async function handleTokenRefresh<T>(
       expires: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes.
     });
 
-    setCookie('refreshToken', newRefreshToken.value, {
+    setCookie('refreshToken', newRefreshToken, {
       httpOnly: false,
       secure: false,
       path: '/',
@@ -103,13 +109,14 @@ async function handleTokenRefresh<T>(
       credentials: 'include',
     });
     return finalData;
-  } catch (err: any) {
+  } catch (error) {
+    const refreshError = error as Error;
     if (
-      err.message === 'Failed to refresh token' ||
-      err.message === 'No refresh token found in cookies.'
+      refreshError.message === 'Failed to refresh token' ||
+      refreshError.message === 'No refresh token found in cookies.'
     ) {
       redirect('/auth/login');
     }
-    throw err;
+    throw error;
   }
 }
