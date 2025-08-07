@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { FeaturedProducts } from './components/product/featured-products';
-import { CategoryList } from './components/category/category-list';
 
 export default function HomePage() {
   return (

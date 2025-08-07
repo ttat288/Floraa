@@ -25,7 +25,6 @@ export interface LoginResponse {
 export async function POST(request: Request): Promise<Response> {
   try {
     const reqData = await request.json();
-
     const netResponse = await fetch(
       `${env.NEXT_PUBLIC_API_ENDPOINT}/api/Auth/login`,
       {
@@ -68,7 +67,8 @@ export async function POST(request: Request): Promise<Response> {
     let data: LoginResponse;
     try {
       data = await netResponse.json();
-    } catch (error) {
+    } catch {
+      // Removed _error: unknown
       return NextResponse.json(
         {
           success: false,
@@ -101,7 +101,8 @@ export async function POST(request: Request): Promise<Response> {
         { role: data.data.user.role.toString() },
         env.NEXT_PUBLIC_JWT_SECRET
       );
-    } catch (error) {
+    } catch {
+      // Removed _error: unknown
       return NextResponse.json(
         {
           success: false,
@@ -116,7 +117,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const response = NextResponse.json(data, { status: 200 });
 
-    // Set cookies
+    // Set cookies [^1][^2]
     if (roleToken) {
       response.cookies.set('roleToken', roleToken, {
         httpOnly: true,
@@ -146,7 +147,8 @@ export async function POST(request: Request): Promise<Response> {
     });
 
     return response;
-  } catch (error) {
+  } catch {
+    // Removed _error: unknown
     return NextResponse.json(
       {
         success: false,

@@ -46,7 +46,6 @@ export const http = {
   ) => fetchWithAuth<T>(url, { method: 'DELETE', ...options }, baseUrl),
 };
 
-// eslint-disable-next-line no-shadow
 export enum HttpVerb {
   /**
    * The GET HTTP verb.
