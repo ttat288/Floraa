@@ -42,10 +42,10 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
 
       {/* Categories Section */}
-      <CategoryList />
+      {/* <CategoryList /> */}
 
       {/* Call to Action / About Us Snippet */}
       <section className='py-16 bg-flora-background-light'>

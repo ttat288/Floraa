@@ -1,7 +1,6 @@
 'use client';
 
 import type React from 'react';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -10,14 +9,20 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { EyeIcon, EyeOffIcon, LoaderIcon, AlertCircleIcon } from 'lucide-react';
 import Link from 'next/link';
+import type { LoginResponse } from '@/app/api/auth/login/route'; // Import the LoginResponse type
 
 interface LoginFormData {
   email: string;
   password: string;
 }
 
-interface LoginError {
-  message: string;
+// Define user roles with numerical values for consistency with backend/middleware
+enum UserRole {
+  Customer = 1,
+  Staff = 2,
+  Manager = 3,
+  SuperManager = 4,
+  Admin = 5,
 }
 
 export function LoginForm() {
@@ -57,7 +62,6 @@ export function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setIsLoading(true);
@@ -75,17 +79,44 @@ export function LoginForm() {
         }),
       });
 
-      const data = await response.json();
+      const data: LoginResponse = await response.json(); // Cast to LoginResponse type
 
-      if (!response.ok || !data.isSuccess) {
-        throw new Error(data.title || 'Đăng nhập thất bại');
+      if (!response.ok || !data.success) {
+        setError(data.message || 'Có lỗi xảy ra, vui lòng thử lại');
+        return;
       }
 
-      router.push('/');
-      router.refresh();
+      // Login successful - determine redirect based on role
+      const userRole = data.data.user.role;
+      let redirectPath = '/'; // Default redirect for customers and unknown roles
+
+      switch (userRole) {
+        case UserRole.Admin:
+          redirectPath = '/admin/dashboard';
+          break;
+        case UserRole.SuperManager:
+          redirectPath = '/super-manager/dashboard';
+          break;
+        case UserRole.Manager:
+          redirectPath = '/manager/dashboard';
+          break;
+        case UserRole.Staff:
+          redirectPath = '/staff/dashboard';
+          break;
+        // For Customer role, redirect to home page (or /profile if preferred)
+        case UserRole.Customer:
+          redirectPath = '/'; // Or '/profile' if you want them to land on their profile
+          break;
+        default:
+          redirectPath = '/'; // Fallback for unknown roles
+          break;
+      }
+
+      router.push(redirectPath);
+      router.refresh(); // Refresh the page to re-evaluate middleware and layout
     } catch (error) {
-      const loginError = error as LoginError;
-      setError(loginError.message || 'Có lỗi xảy ra, vui lòng thử lại');
+      console.error('Login error:', error);
+      setError('Có lỗi xảy ra, vui lòng thử lại');
     } finally {
       setIsLoading(false);
     }

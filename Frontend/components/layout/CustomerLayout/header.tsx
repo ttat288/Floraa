@@ -13,9 +13,9 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { useState } from 'react';
-import { ModeToggle } from '../custom/button/mode-toggle-btn';
+import { ModeToggle } from '@/components/custom/button/mode-toggle-btn';
 import { CartDropdown } from './components/cart-dropdown';
-import { ProfileDropdown } from './components/profile-dropdown';
+import { ProfileDropdown } from './components/profile-dropdown'; // Updated import
 import { MegaMenu } from './components/mega-menu';
 
 // Simplified menu structure - grouped logically

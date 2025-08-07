@@ -1,5 +1,5 @@
-import { Footer } from '@/components/layout/footer';
-import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/CustomerLayout/footer';
+import { Header } from '@/components/layout/CustomerLayout/header';
 import React from 'react';
 
 export default function CustomerLayout({
